@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Booking System - Project Timeline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4CAF50;
+            --info: #2196F3;
+            --warning: #FF9800;
+            --danger: #f72585;
+            --phase1: #4cc9f0;
+            --phase2: #4361ee;
+            --phase3: #3a0ca3;
+            --phase4: #7209b7;
+            --phase5: #f72585;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7ff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 0 80px;
+            text-align: center;
+            border-bottom-left-radius: 30% 15%;
+            border-bottom-right-radius: 30% 15%;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 60px auto;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--phase1), var(--phase2), var(--phase3), var(--phase4), var(--phase5));
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            border-radius: 20px;
+        }
+        
+        .phase-header {
+            text-align: center;
+            margin: 50px 0 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .phase-header h2 {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .phase-1 h2 {
+            background: var(--phase1);
+        }
+        
+        .phase-2 h2 {
+            background: var(--phase2);
+        }
+        
+        .phase-3 h2 {
+            background: var(--phase3);
+        }
+        
+        .phase-4 h2 {
+            background: var(--phase4);
+        }
+        
+        .phase-5 h2 {
+            background: var(--phase5);
+        }
+        
+        .timeline-item {
+            padding: 10px 50px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            top: 20px;
+            border: 4px solid;
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .phase-1 .timeline-item::after {
+            border-color: var(--phase1);
+        }
+        
+        .phase-2 .timeline-item::after {
+            border-color: var(--phase2);
+        }
+        
+        .phase-3 .timeline-item::after {
+            border-color: var(--phase3);
+        }
+        
+        .phase-4 .timeline-item::after {
+            border-color: var(--phase4);
+        }
+        
+        .phase-5 .timeline-item::after {
+            border-color: var(--phase5);
+        }
+        
+        .timeline-content {
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-content h3 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-content h3 span {
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        
+        .timeline-content ul {
+            list-style-type: none;
+        }
+        
+        .timeline-content ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .timeline-content ul li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--success);
+        }
+        
+        .achievements {
+            background: white;
+            padding: 60px 0;
+            margin-top: 60px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .achievements h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .achievements h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+        
+        .achievement-item {
+            background: var(--light);
+            padding: 30px 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-left: 4px solid;
+        }
+        
+        .achievement-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .achievement-item h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .achievement-item h3 i {
+            margin-right: 10px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+        }
+        
+        .achievement-item p {
+            color: #6c757d;
+        }
+        
+        .achievement-item:nth-child(1) {
+            border-color: var(--primary);
+        }
+        
+        .achievement-item:nth-child(1) h3 i {
+            background: var(--primary);
+        }
+        
+        .achievement-item:nth-child(2) {
+            border-color: var(--danger);
+        }
+        
+        .achievement-item:nth-child(2) h3 i {
+            background: var(--danger);
+        }
+        
+        .achievement-item:nth-child(3) {
+            border-color: var(--success);
+        }
+        
+        .achievement-item:nth-child(3) h3 i {
+            background: var(--success);
+        }
+        
+        .achievement-item:nth-child(4) {
+            border-color: var(--warning);
+        }
+        
+        .achievement-item:nth-child(4) h3 i {
+            background: var(--warning);
+        }
+        
+        .achievement-item:nth-child(5) {
+            border-color: var(--info);
+        }
+        
+        .achievement-item:nth-child(5) h3 i {
+            background: var(--info);
+        }
+        
+        .achievement-item:nth-child(6) {
+            border-color: var(--secondary);
+        }
+        
+        .achievement-item:nth-child(6) h3 i {
+            background: var(--secondary);
+        }
+        
+        .achievement-item:nth-child(7) {
+            border-color: var(--phase5);
+        }
+        
+        .achievement-item:nth-child(7) h3 i {
+            background: var(--phase5);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            color: #6c757d;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+            }
+            
+            .timeline-item::after {
+                left: 20px;
+                top: 20px;
+            }
+            
+            .right {
+                left: 0;
+            }
+            
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                padding: 40px 0 60px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Restaurant Booking System</h1>
+            <p>15-Week Development Timeline</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="timeline">
+            <!-- Phase 1 -->
+            <div class="phase-header phase-1">
+                <h2>Phase 1: Research & Requirements Analysis</h2>
+            </div>
+            
+            <div class="phase-1">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Week 1: Project Conceptualization <span>Week 1</span></h3>
+                        <ul>
+                            <li>Conducted market research on existing restaurant booking platforms</li>
+                            <li>Identified key pain points in current booking systems</li>
+                            <li>Analyzed target user needs (both restaurant owners and customers)</li>
+                            <li>Defined project scope and core functionality requirements</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Technical Exploration <span>Week 2</span></h3>
+                        <ul>
+                            <li>Researched available technologies for 3D visualization</li>
+                            <li>Evaluated Three.js and React Three Fiber for interactive floor plans</li>
+                            <li>Explored MongoDB schema design options for restaurant data</li>
+                            <li>Investigated API options for location services and map integration</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>System Architecture Design <span>Week 3</span></h3>
+                        <ul>
+                            <li>Created comprehensive database schema and ER diagrams</li>
+                            <li>Designed system architecture with clear component separation</li>
+                            <li>Developed wireframes for key user interfaces</li>
+                            <li>Established technology stack (Next.js, MongoDB, Three.js)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 2 -->
+            <div class="phase-header phase-2">
+                <h2>Phase 2: Core Foundation Development</h2>
+            </div>
+            
+            <div class="phase-2">
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Project Setup and Infrastructure <span>Week 4</span></h3>
+                        <ul>
+                            <li>Initialized development repository and project structure</li>
+                            <li>Set up MongoDB database and connection infrastructure</li>
+                            <li>Created basic user authentication framework</li>
+                            <li>Implemented core data models for users and restaurants</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>3D Visualization Framework <span>Week 5</span></h3>
+                        <ul>
+                            <li>Implemented basic Three.js integration</li>
+                            <li>Created fundamental 3D object rendering capabilities</li>
+                            <li>Developed initial floor plan visualization prototype</li>
+                            <li>Established object manipulation controls</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Restaurant Management System <span>Week 6</span></h3>
+                        <ul>
+                            <li>Built restaurant profile management interface</li>
+                            <li>Implemented restaurant data storage and retrieval</li>
+                            <li>Created restaurant owner dashboard structure</li>
+                            <li>Developed user role management system</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 3 -->
+            <div class="phase-header phase-3">
+                <h2>Phase 3: Interactive Features Development</h2>
+            </div>
+            
+            <div class="phase-3">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Floor Plan Editor <span>Week 7</span></h3>
+                        <ul>
+                            <li>Implemented interactive floor plan editor for restaurant owners</li>
+                            <li>Created furniture placement and arrangement functionality</li>
+                            <li>Developed table properties and configuration options</li>
+                            <li>Built floor plan data persistence system</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Floor Plan Viewer <span>Week 8</span></h3>
+                        <ul>
+                            <li>Created customer-facing floor plan visualization</li>
+                            <li>Implemented zoom and navigation controls</li>
+                            <li>Developed table selection interface</li>
+                            <li>Added information overlay for selected tables</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>User Profile System <span>Week 9</span></h3>
+                        <ul>
+                            <li>Built user profile management for customers</li>
+                            <li>Implemented profile image handling with AWS S3</li>
+                            <li>Created user preference storage</li>
+                            <li>Developed authentication enhancement and security features</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 4 -->
+            <div class="phase-header phase-4">
+                <h2>Phase 4: Booking System Implementation</h2>
+            </div>
+            
+            <div class="phase-4">
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Core Booking Engine <span>Week 10</span></h3>
+                        <ul>
+                            <li>Designed and implemented booking data model</li>
+                            <li>Created availability checking algorithm</li>
+                            <li>Developed booking reference generator</li>
+                            <li>Built booking history tracking system</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Restaurant-Side Booking Management <span>Week 11</span></h3>
+                        <ul>
+                            <li>Implemented booking dashboard for restaurant owners</li>
+                            <li>Created booking status management interface</li>
+                            <li>Developed calendar view of reservations</li>
+                            <li>Built booking filtering and search functionality</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Customer Booking Experience <span>Week 12</span></h3>
+                        <ul>
+                            <li>Created intuitive booking flow for customers</li>
+                            <li>Implemented date and time selection interface</li>
+                            <li>Developed guest count and special requests handling</li>
+                            <li>Built booking confirmation and notification system</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 5 -->
+            <div class="phase-header phase-5">
+                <h2>Phase 5: Advanced Features and Integration</h2>
+            </div>
+            
+            <div class="phase-5">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Review and Rating System <span>Week 13</span></h3>
+                        <ul>
+                            <li>Implemented customer review submission interface</li>
+                            <li>Created rating calculation and display system</li>
+                            <li>Developed review moderation tools for restaurant owners</li>
+                            <li>Built photo attachment functionality for reviews</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Messaging and Communication <span>Week 14</span></h3>
+                        <ul>
+                            <li>Implemented real-time messaging between customers and restaurants</li>
+                            <li>Created conversation management system</li>
+                            <li>Developed notification system for new messages</li>
+                            <li>Built message history and threading functionality</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Final Integration and Optimization <span>Week 15</span></h3>
+                        <ul>
+                            <li>Performed comprehensive system testing</li>
+                            <li>Implemented performance optimizations</li>
+                            <li>Fixed identified bugs and usability issues</li>
+                            <li>Prepared deployment configuration and documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="achievements">
+            <div class="container">
+                <h2>Key Project Achievements</h2>
+                <div class="achievement-grid">
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-cube"></i> Interactive 3D Visualization</h3>
+                        <p>Created intuitive floor plan editor and viewer using Three.js with real-time interaction capabilities</p>
+                    </div>
+                    
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-calendar-check"></i> Comprehensive Booking System</h3>
+                        <p>Implemented complete restaurant reservation management with advanced availability checking</p>
+                    </div>
+                    
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-clock"></i> Real-time Availability</h3>
+                        <p>Built sophisticated table availability checking algorithm with instant feedback</p>
+                    </div>
+                    
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-users"></i> User Experience Focus</h3>
+                        <p>Designed intuitive interfaces for both customers and restaurant owners with comprehensive testing</p>
+                    </div>
+                    
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-plug"></i> Multiple Integration Points</h3>
+                        <p>Successfully incorporated Google Maps API and AWS S3 for location services and media storage</p>
+                    </div>
+                    
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-comments"></i> Communication System</h3>
+                        <p>Developed messaging between customers and restaurants with notification capabilities</p>
+                    </div>
+                    
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-mobile-alt"></i> Mobile Responsive Design</h3>
+                        <p>Ensured application works seamlessly across different devices with adaptive interfaces</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Restaurant Booking System Project - 2024</p>
+        </div>
+    </footer>
+</body>
+</html>
