@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* App-specific colors */
+    --primary: #FF4F18;       /* Main orange accent */
+    --primary-dark: #E03A0B;  /* Darker shade */
+    --primary-light: #FF7A4D; /* Lighter shade */
+    --dark: #141517;          /* Dark text */
+    --light: #FFFFFF;         /* Light background */
+    --light-gray: #F9FAFB;    /* Gray background */
+    --gray-text: #6B7280;     /* Gray text */
+    
+    /* Phase colors - using shades that complement the app */
+    --phase1: #FF4F18;
+    --phase2: #FF7046;
+    --phase3: #FF9174;
+    --phase4: #FFB2A0;
+    --phase5: #FFD3CB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden; /* For 3D effects */
+    background: linear-gradient(to bottom, #ffffff, #f5f5f7);
+}
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.85;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 60px 0 80px;
+    text-align: center;
+    border-bottom-left-radius: 30% 15%;
+    border-bottom-right-radius: 30% 15%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    z-index: 0;
+}
+
+header .header-content {
+    position: relative;
+    z-index: 2;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+header p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.timeline {
+    position: relative;
+    margin: 60px auto;
+    padding: 40px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--primary), var(--primary-light), var(--phase3), var(--phase4), var(--phase5));
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255, 79, 24, 0.3);
+}
+
+.phase-header {
+    text-align: center;
+    margin: 50px 0 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.phase-header h2 {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.phase-header h2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.phase-1 h2 {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+
+.phase-2 h2 {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+}
+
+.phase-3 h2 {
+    background: linear-gradient(135deg, var(--phase3), var(--primary-light));
+    color: var(--dark);
+}
+
+.phase-4 h2 {
+    background: linear-gradient(135deg, var(--phase4), var(--phase3));
+    color: var(--dark);
+}
+
+.phase-5 h2 {
+    background: linear-gradient(135deg, var(--phase5), var(--phase4));
+    color: var(--dark);
+}
+
+.timeline-item {
+    padding: 10px 50px;
+    position: relative;
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    top: 20px;
+    border: 4px solid;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05), 0 0 10px rgba(255, 79, 24, 0.3);
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover::after {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05), 0 0 15px rgba(255, 79, 24, 0.5);
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    left: 50%;
+}
+
+.left::after {
+    right: -10px;
+}
+
+.right::after {
+    left: -10px;
+}
+
+.phase-1 .timeline-item::after {
+    border-color: var(--primary);
+}
+
+.phase-2 .timeline-item::after {
+    border-color: var(--primary-light);
+}
+
+.phase-3 .timeline-item::after {
+    border-color: var(--phase3);
+}
+
+.phase-4 .timeline-item::after {
+    border-color: var(--phase4);
+}
+
+.phase-5 .timeline-item::after {
+    border-color: var(--phase5);
+}
+
+.timeline-content {
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content h3 {
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+}
+
+.timeline-content h3 span {
+    background: var(--light-gray);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    margin-left: 10px;
+    color: var(--dark);
+}
+
+.timeline-content ul {
+    list-style-type: none;
+}
+
+.timeline-content ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.timeline-content ul li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary);
+}
+
+.achievements {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 60px 0;
+    margin-top: 60px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.achievements h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    position: relative;
+    color: var(--dark);
+}
+
+.achievements h2::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--primary-light));
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.achievement-item {
+    background: var(--light-gray);
+    padding: 30px 25px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary);
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5px);
+}
+
+.achievement-item:hover {
+    transform: translateY(-5px) rotate3d(1, 2, 0, 5deg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 245, 247, 0.95));
+}
+
+.achievement-item h3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.achievement-item h3 i {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+
+.achievement-item p {
+    color: var(--gray-text);
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 60px;
+    color: var(--gray-text);
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 20px;
+    }
+    
+    .timeline-item::after {
+        left: 20px;
+        top: 20px;
+    }
+    
+    .right {
+        left: 0;
+    }
+    
+    .achievement-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        padding: 40px 0 60px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    #canvas-container {
+        opacity: 0.6; /* Lower opacity on mobile for better readability */
+    }
+} 
