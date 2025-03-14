@@ -9,20 +9,21 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
         :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4cc9f0;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4CAF50;
-            --info: #2196F3;
-            --warning: #FF9800;
-            --danger: #f72585;
-            --phase1: #4cc9f0;
-            --phase2: #4361ee;
-            --phase3: #3a0ca3;
-            --phase4: #7209b7;
-            --phase5: #f72585;
+            /* App-specific colors */
+            --primary: #FF4F18;       /* Main orange accent */
+            --primary-dark: #E03A0B;  /* Darker shade */
+            --primary-light: #FF7A4D; /* Lighter shade */
+            --dark: #141517;          /* Dark text */
+            --light: #FFFFFF;         /* Light background */
+            --light-gray: #F9FAFB;    /* Gray background */
+            --gray-text: #6B7280;     /* Gray text */
+            
+            /* Phase colors - using shades that complement the app */
+            --phase1: #FF4F18;
+            --phase2: #FF7046;
+            --phase3: #FF9174;
+            --phase4: #FFB2A0;
+            --phase5: #FFD3CB;
         }
         
         * {
@@ -33,7 +34,7 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f5f7ff;
+            background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
         }
@@ -45,12 +46,13 @@
         }
         
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             padding: 60px 0 80px;
             text-align: center;
             border-bottom-left-radius: 30% 15%;
             border-bottom-right-radius: 30% 15%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
         
         header h1 {
@@ -77,7 +79,7 @@
             position: absolute;
             height: 100%;
             width: 4px;
-            background: linear-gradient(to bottom, var(--phase1), var(--phase2), var(--phase3), var(--phase4), var(--phase5));
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light), var(--phase3), var(--phase4), var(--phase5));
             left: 50%;
             top: 0;
             transform: translateX(-50%);
@@ -94,30 +96,33 @@
         .phase-header h2 {
             display: inline-block;
             padding: 15px 30px;
-            border-radius: 50px;
+            border-radius: 15px;
             color: white;
             font-size: 1.5rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .phase-1 h2 {
-            background: var(--phase1);
+            background: var(--primary);
         }
         
         .phase-2 h2 {
-            background: var(--phase2);
+            background: var(--primary-light);
         }
         
         .phase-3 h2 {
             background: var(--phase3);
+            color: var(--dark);
         }
         
         .phase-4 h2 {
             background: var(--phase4);
+            color: var(--dark);
         }
         
         .phase-5 h2 {
             background: var(--phase5);
+            color: var(--dark);
         }
         
         .timeline-item {
@@ -157,11 +162,11 @@
         }
         
         .phase-1 .timeline-item::after {
-            border-color: var(--phase1);
+            border-color: var(--primary);
         }
         
         .phase-2 .timeline-item::after {
-            border-color: var(--phase2);
+            border-color: var(--primary-light);
         }
         
         .phase-3 .timeline-item::after {
@@ -179,7 +184,7 @@
         .timeline-content {
             padding: 30px;
             background-color: white;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
@@ -194,14 +199,16 @@
             margin-bottom: 15px;
             display: flex;
             align-items: center;
+            color: var(--primary);
         }
         
         .timeline-content h3 span {
-            background: #e9ecef;
+            background: var(--light-gray);
             padding: 5px 10px;
-            border-radius: 20px;
+            border-radius: 10px;
             font-size: 0.8rem;
             margin-left: 10px;
+            color: var(--dark);
         }
         
         .timeline-content ul {
@@ -221,14 +228,14 @@
             position: absolute;
             left: 0;
             top: 0;
-            color: var(--success);
+            color: var(--primary);
         }
         
         .achievements {
             background: white;
             padding: 60px 0;
             margin-top: 60px;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
@@ -237,6 +244,7 @@
             margin-bottom: 40px;
             font-size: 2rem;
             position: relative;
+            color: var(--dark);
         }
         
         .achievements h2::after {
@@ -259,11 +267,11 @@
         }
         
         .achievement-item {
-            background: var(--light);
+            background: var(--light-gray);
             padding: 30px 25px;
-            border-radius: 10px;
+            border-radius: 15px;
             transition: all 0.3s ease;
-            border-left: 4px solid;
+            border-left: 4px solid var(--primary);
         }
         
         .achievement-item:hover {
@@ -276,6 +284,7 @@
             align-items: center;
             margin-bottom: 15px;
             font-weight: 600;
+            color: var(--dark);
         }
         
         .achievement-item h3 i {
@@ -287,73 +296,18 @@
             justify-content: center;
             border-radius: 50%;
             color: white;
-        }
-        
-        .achievement-item p {
-            color: #6c757d;
-        }
-        
-        .achievement-item:nth-child(1) {
-            border-color: var(--primary);
-        }
-        
-        .achievement-item:nth-child(1) h3 i {
             background: var(--primary);
         }
         
-        .achievement-item:nth-child(2) {
-            border-color: var(--danger);
-        }
-        
-        .achievement-item:nth-child(2) h3 i {
-            background: var(--danger);
-        }
-        
-        .achievement-item:nth-child(3) {
-            border-color: var(--success);
-        }
-        
-        .achievement-item:nth-child(3) h3 i {
-            background: var(--success);
-        }
-        
-        .achievement-item:nth-child(4) {
-            border-color: var(--warning);
-        }
-        
-        .achievement-item:nth-child(4) h3 i {
-            background: var(--warning);
-        }
-        
-        .achievement-item:nth-child(5) {
-            border-color: var(--info);
-        }
-        
-        .achievement-item:nth-child(5) h3 i {
-            background: var(--info);
-        }
-        
-        .achievement-item:nth-child(6) {
-            border-color: var(--secondary);
-        }
-        
-        .achievement-item:nth-child(6) h3 i {
-            background: var(--secondary);
-        }
-        
-        .achievement-item:nth-child(7) {
-            border-color: var(--phase5);
-        }
-        
-        .achievement-item:nth-child(7) h3 i {
-            background: var(--phase5);
+        .achievement-item p {
+            color: var(--gray-text);
         }
         
         footer {
             text-align: center;
             padding: 30px 0;
             margin-top: 60px;
-            color: #6c757d;
+            color: var(--gray-text);
         }
         
         @media (max-width: 768px) {
@@ -393,8 +347,8 @@
 <body>
     <header>
         <div class="container">
-            <h1>Restaurant Booking System</h1>
-            <p>15-Week Development Timeline</p>
+            <h1>CHOOSE, CLICK, and RESERVE - FOODLOFT</h1>
+            <p>Project Development Timeline - 15 Weeks</p>
         </div>
     </header>
     
@@ -408,7 +362,7 @@
             <div class="phase-1">
                 <div class="timeline-item left">
                     <div class="timeline-content">
-                        <h3>Week 1: Project Conceptualization <span>Week 1</span></h3>
+                        <h3>Project Conceptualization <span>Week 1</span></h3>
                         <ul>
                             <li>Conducted market research on existing restaurant booking platforms</li>
                             <li>Identified key pain points in current booking systems</li>
